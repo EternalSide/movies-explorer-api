@@ -78,6 +78,9 @@ const updateUser = async (req, res, next) => {
     if (e.name === 'DocumentNotFoundError') {
       return next(new NotFoundError('Пользователь не найден'));
     }
+    if (e.code === 11000) {
+      next(new ConflictError('Пользователь с таким email уже существует.'));
+    }
     return next(e);
   }
 };

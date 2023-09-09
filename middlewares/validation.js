@@ -18,7 +18,7 @@ const registerValidation = celebrate({
 
 const patchUserInfoValidation = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().min(2).max(30),
+    email: Joi.string().email().min(2).max(30),
     name: Joi.string().min(2).max(30),
   }),
 });
@@ -39,7 +39,7 @@ const postMovieValidation = celebrate({
     trailerLink: Joi.string().required().url(),
     thumbnail: Joi.string().required().url(),
     owner: Joi.string().length(24).hex().required(),
-    movieId: Joi.string().length(24).hex().required(),
+    movieId: Joi.number().length(24).hex().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
