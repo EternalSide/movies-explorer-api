@@ -37,6 +37,7 @@ const createUser = async (req, res, next) => {
 const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+
     const user = await User.findUserByCredentials(email, password);
 
     const token = jwt.sign(

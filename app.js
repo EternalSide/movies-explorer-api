@@ -12,9 +12,9 @@ const errorHandler = require('./middlewares/error-handler');
 const NotFoundError = require('./errors/NotFound');
 
 // Configuration
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-const limiter = require('./utils/limiter');
+// const limiter = require('./utils/limiter');
 
 const corsOptions = {
   credentials: true,
@@ -45,7 +45,7 @@ app.use(cors(corsOptions));
 app.use(helmet());
 app.use(express.json());
 app.use(requestLogger);
-app.use(limiter);
+// app.use(limiter);
 
 // Crash Test
 app.get('/crash-test', crashTest);

@@ -71,6 +71,6 @@ const movieSchema = new mongoose.Schema(
   { versionKey: false },
 );
 
-const Movie = mongoose.model('card', movieSchema);
+const Movie = mongoose.model('movies', movieSchema);
 
 module.exports = Movie;

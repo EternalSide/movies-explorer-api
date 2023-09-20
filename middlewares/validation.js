@@ -25,7 +25,7 @@ const patchUserInfoValidation = celebrate({
 
 const deleteMovieValidation = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().length(24).hex().required(),
+    movieId: Joi.number().required(),
   }),
 });
 const postMovieValidation = celebrate({
@@ -35,11 +35,10 @@ const postMovieValidation = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().url(),
-    trailerLink: Joi.string().required().url(),
-    thumbnail: Joi.string().required().url(),
-    owner: Joi.string().length(24).hex().required(),
-    movieId: Joi.number().length(24).hex().required(),
+    image: Joi.string().required().uri(),
+    trailerLink: Joi.string().required().uri(),
+    thumbnail: Joi.string().required().uri(),
+    movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
