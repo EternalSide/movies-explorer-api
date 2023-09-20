@@ -15,10 +15,8 @@ const getMovies = async (req, res, next) => {
 
 const postMovie = async (req, res, next) => {
   try {
-    const movieInfo = req.body;
-
     const newMovie = await Movie.create({
-      ...movieInfo,
+      ...req.body,
       owner: req.user._id,
     });
 
@@ -35,7 +33,8 @@ const deleteMovie = async (req, res, next) => {
   try {
     const { movieId } = req.params;
 
-    const movie = await Movie.findById(movieId).orFail();
+    const movie = await Movie.findOne({ movieId }).orFail();
+
     const isUserOwner = movie.owner.toString() === req.user._id;
 
     if (!isUserOwner) {

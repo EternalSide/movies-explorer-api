@@ -34,7 +34,10 @@ const userSchema = new Schema(
   { versionKey: false },
 );
 
-userSchema.statics.findUserByCredentials = async (email, password) => {
+userSchema.statics.findUserByCredentials = async function findUser(
+  email,
+  password,
+) {
   const user = await this.findOne({ email }).select('+password');
 
   if (!user) {
