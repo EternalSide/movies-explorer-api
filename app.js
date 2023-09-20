@@ -12,7 +12,7 @@ const errorHandler = require('./middlewares/error-handler');
 const NotFoundError = require('./errors/NotFound');
 
 // Configuration
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // const limiter = require('./utils/limiter');
 
