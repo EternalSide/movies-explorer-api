@@ -5,7 +5,9 @@ const Movie = require('../models/movie');
 
 const getMovies = async (req, res, next) => {
   try {
-    const userMovies = await Movie.find({ owner: req.user._id });
+    const userMovies = await Movie.find({ owner: req.user._id }).sort({
+      createdAt: -1,
+    });
 
     return res.json(userMovies);
   } catch (e) {
@@ -31,9 +33,7 @@ const postMovie = async (req, res, next) => {
 
 const deleteMovie = async (req, res, next) => {
   try {
-    const { movieId } = req.params;
-
-    const movie = await Movie.findOne({ movieId }).orFail();
+    const movie = await Movie.findOne({ owner: req.user._id }).orFail();
 
     const isUserOwner = movie.owner.toString() === req.user._id;
 
