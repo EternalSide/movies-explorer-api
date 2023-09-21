@@ -22,6 +22,6 @@ module.exports = async (req, res, next) => {
 
     return next();
   } catch (err) {
-    throw new UnauthorizedError('Вы не Авторизованы');
+    return next(new UnauthorizedError('Вы не Авторизованы'));
   }
 };
