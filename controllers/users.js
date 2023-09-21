@@ -56,7 +56,7 @@ const loginUser = async (req, res, next) => {
 
 const getUserInfo = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id).orFail();
 
     return res.json(user);
   } catch (e) {
