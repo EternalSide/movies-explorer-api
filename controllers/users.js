@@ -60,7 +60,6 @@ const getUserInfo = async (req, res, next) => {
 
     return res.json(user);
   } catch (e) {
-    console.log('fail');
     return next(e);
   }
 };
